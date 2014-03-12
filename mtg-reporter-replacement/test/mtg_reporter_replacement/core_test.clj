@@ -5,8 +5,8 @@
 ;(deftest a-test
 ;  (testing "FIXME, I fail."
 ;    (is (= 0 1))))
-(def sample-player {:first "Sample", :last "Player", :number 123})
-(def second-player {:first "Second", :last "Person", :number 456})
+(def sample-player {:first "Sample", :last "Player", :number 123, :results [], :points 0})
+(def second-player {:first "Second", :last "Person", :number 456, :results [], :points 0})
 (def match-result-one {:round 1, :playerA 123, :playerB 456, :a-wins 2, :b-wins 1, :draws 0})
 (def match-result-two {:round 1, :playerA 123, :playerB 456, :a-wins 1, :b-wins 2, :draws 0})
 (def match-result-three {:round 1, :playerA 123, :playerB 456, :a-wins 1, :b-wins 1, :draws 1})

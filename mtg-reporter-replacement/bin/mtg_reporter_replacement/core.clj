@@ -1,14 +1,9 @@
 (ns mtg-reporter-replacement.core)
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
-
 ;Players need first and last names, along with DCI number
 ;I think they want country eventually, but that can come later
 (defn create-player [first last num]
-  {:first first, :last last, :number num})
+  {:first first, :last last, :number num, :results [], :points 0})
 
 ;Match results have a round number, the two players involved
 ;(identified by number since each player's round results are different under Clojure),
@@ -34,4 +29,23 @@
       (> (res :wins) (res :losses)) 3
       (< (res :wins) (res :losses)) 0
       :else 1)))
+(defn match-result-of-player? [player match-result]
+  (or (= (player :number) (match-result :playerA)) (= (player :number) (match-result :playerB))))
+
+(defn get-player-match-result [player match-results]
+  (first (filter #(match-result-of-player? player %) match-results)))
+
+(defn append-match-result-to-player [player match-result]
+  {:first (player :first), :last (player :last), :number (player :number),
+   :results (conj (player :results) match-result), :points (player :points)})
+
+(defn process-match-results [players match-results]
+  (map #(append-match-result-to-player % (get-player-match-result % match-results)) players))
+
+(defn calculate-match-points-for-player [player]
+  {:first (player :first), :last (player :last), :number (player :number),
+   :results (player :results), :points (reduce + (map #(calculate-match-points player %) (player :results)))})
+
+(defn process-match-points [players]
+  (map calculate-match-points-for-player players))
   
