@@ -1,4 +1,5 @@
-(ns mtg-reporter-replacement.results-gui)
+(ns mtg-reporter-replacement.results-gui
+  (:use seesaw.core))
 
 (def b (button :text "Some Text"))
 (def c (button :text "More Text"))
