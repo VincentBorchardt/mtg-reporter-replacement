@@ -48,4 +48,9 @@
 
 (defn process-match-points [players]
   (map calculate-match-points-for-player players))
+
+(defn sort-standings [players]
+  (reverse (sort-by #(% :points))))
+;That is the standings for the round, or at least all the players in the round
+;it probably needs a full-tournament wrapper with all the info that requires--notably the round number that keeps getting updated
   

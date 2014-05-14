@@ -14,3 +14,9 @@
 
 (def tourney-with-r1-results (process-match-results tourney-round-0 round-1-results))
 (def tourney-round-1 (process-match-points tourney-with-r1-results))
+
+;What a tourney looks like:
+;({:first "Joe", :last "First", :number 1, :results [{:round 1, :playerA 1, :playerB 2, :a-wins 2, :b-wins 1, :draws 0}], :points 3}
+;;{:first "Mary", :last "Second", :number 2, :results [{:round 1, :playerA 1, :playerB 2, :a-wins 2, :b-wins 1, :draws 0}], :points 0}
+;;{:first "Harry", :last "Third", :number 3, :results [{:round 1, :playerA 3, :playerB 4, :a-wins 1, :b-wins 2, :draws 0}], :points 0}
+;;{:first "Sue", :last "Fourth", :number 4, :results [{:round 1, :playerA 3, :playerB 4, :a-wins 1, :b-wins 2, :draws 0}], :points 3})
